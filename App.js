@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { StyleSheet, View, Button } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
+import Register from "./pages/users/register";
+import Login from "./pages/users/login";
+import Start from "./pages/store/start";
 
 const App = () => {
   const [destination, setDestination] = useState({
@@ -15,43 +18,48 @@ const App = () => {
   });
 
   return (
+    // <View style={styles.container}>
+    //   <MapView
+    //     style={styles.map}
+    //     initialRegion={{
+    //       latitude: 7.8731,
+    //       longitude: 80.7718,
+    //       latitudeDelta: 5,
+    //       longitudeDelta: 1,
+    //     }}
+    //   >
+    //     <Marker
+    //       draggable
+    //       onDragEnd={(e) => {
+    //         console.log(e.nativeEvent.coordinate);
+    //       }}
+    //       coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
+    //       pinColor={"purple"} // any color
+    //       title={"title"}
+    //       description={"description"}
+    //     />
+    //     {/* <MapViewDirections
+    //       origin={origin}
+    //       destination={destination}
+    //       apikey="AIzaSyCdq-7zoPHeMpucfdXHLc1Su5z8NNFco_s"
+    //       strokeWidth={4}
+    //       strokeColor="red"
+    //       mode={'TRANSIT'}
+    //     /> */}
+    //     {/* <Marker
+    //       coordinate={origin}
+    //       title="Starting Point"
+    //     />
+    //     <Marker
+    //       coordinate={destination}
+    //       title="Destination Point"
+    //     /> */}
+    //   </MapView>
+    // </View>
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 7.8731,
-          longitude: 80.7718,
-          latitudeDelta: 5,
-          longitudeDelta: 1,
-        }}
-      >
-        <Marker
-          draggable
-          onDragEnd={(e) => {
-            console.log(e.nativeEvent.coordinate);
-          }}
-          coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
-          pinColor={"purple"} // any color
-          title={"title"}
-          description={"description"}
-        />
-        {/* <MapViewDirections
-          origin={origin}
-          destination={destination}
-          apikey="AIzaSyCdq-7zoPHeMpucfdXHLc1Su5z8NNFco_s"
-          strokeWidth={4}
-          strokeColor="red"
-          mode={'TRANSIT'}
-        /> */}
-        {/* <Marker
-          coordinate={origin}
-          title="Starting Point"
-        />
-        <Marker
-          coordinate={destination}
-          title="Destination Point"
-        /> */}
-      </MapView>
+      {/* <Register /> */}
+      {/* <Login /> */}
+      <Start />
     </View>
   );
 };
