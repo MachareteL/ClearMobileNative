@@ -10,9 +10,9 @@ const TextInputC = ({ placeholder, onChangeText, value, max, keyboardType }) => 
 const styles = StyleSheet.create({
     textInput: {
         color: '#000',
-        borderWidth: '2px',
+        borderWidth: 2,
         borderColor: '#9FA5B8',
-        borderRadius: '10%',
+        // borderRadius: '20px',
         justifyContent: 'center',
         padding: 10,
         height: 50,
