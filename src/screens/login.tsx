@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -8,8 +8,19 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import { supabase } from "../lib/supabaseconfig";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Login() {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const { navigate } = useNavigation();
+  async function authenticate() {
+    const { data, error } = await supabase.auth.signInWithPassword(credentials);
+    console.log(data);
+    
+    navigate("Register");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.upperContainer}>
@@ -26,9 +37,25 @@ export default function Login() {
           style={styles.image}
         >
           <View style={styles.inputContainer}>
-            <TextInput style={styles.placeholder} placeholder="Email" />
-            <TextInput style={styles.placeholder} placeholder="Senha" />
-            <TouchableOpacity>
+            <TextInput
+              style={styles.placeholder}
+              placeholder="Email"
+              onChangeText={(email) => {
+                setCredentials({ ...credentials, email });
+              }}
+            />
+            <TextInput
+              style={styles.placeholder}
+              placeholder="Senha"
+              onChangeText={(password) => {
+                setCredentials({ ...credentials, password });
+              }}
+            />
+            <TouchableOpacity
+              onPress={() => {
+                authenticate();
+              }}
+            >
               <Text
                 style={{
                   paddingHorizontal: 36,
