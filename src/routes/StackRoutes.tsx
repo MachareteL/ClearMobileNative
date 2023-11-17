@@ -5,7 +5,6 @@ import Login from "../screens/login";
 import DrawerRoutes from "./DrawerRoutes";
 import Cart from "../screens/cart";
 
-
 const Stack = createNativeStackNavigator();
 
 export default function StackRoutes() {

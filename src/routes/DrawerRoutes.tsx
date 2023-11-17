@@ -1,6 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Cart from "../screens/cart";
 import Products from "../screens/products";
+import Home from "../screens/home";
 
 const Drawer = createDrawerNavigator();
 
