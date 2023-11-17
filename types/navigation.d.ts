@@ -3,6 +3,7 @@ export declare global {
     interface RootParamList {
         Register: undefined
         Login: undefined
+        Products: undefined
     }
   }
 }

@@ -20,7 +20,7 @@ export default function Login() {
       credentials.email,
       credentials.password
     ).then(() => {
-      navigate("Register");
+      navigate("Products");
     });
   }
 

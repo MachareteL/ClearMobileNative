@@ -5,7 +5,7 @@ const Drawer = createDrawerNavigator();
 
 export default function DrawerRoutes() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator initialRouteName='Produtos'>
       <Drawer.Screen name="Produtos" component={Produtos} />
     </Drawer.Navigator>
   );

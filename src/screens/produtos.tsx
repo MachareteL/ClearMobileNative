@@ -1,5 +1,9 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 export default function Produtos() {
-  return <Text>produtos</Text>;
+  return (
+    <View>
+      <Text>LUCAS</Text>
+    </View>
+  );
 }
