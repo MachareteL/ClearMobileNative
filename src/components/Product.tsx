@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-export default function Produtos() {
+export default function Product() {
   return (
     <View>
-      <Text>LUCAS</Text>
+      <Text>Product</Text>
     </View>
   );
 }
