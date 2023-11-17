@@ -11,6 +11,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebaseConfig";
+import { StatusBar } from "expo-status-bar";
 export default function Login() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const { navigate } = useNavigation();
@@ -26,6 +27,7 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="auto" />
       <View style={styles.upperContainer}>
         <Image
           source={require("../../assets/images/iconBlue.png")}
@@ -72,7 +74,12 @@ export default function Login() {
               </Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={{ paddingBottom: 96 }}>
+          <TouchableOpacity
+            style={{ paddingBottom: 96 }}
+            onPress={() => {
+              navigate("Register");
+            }}
+          >
             <Text style={{ color: "#FFF" }}>
               Não possui uma conta? Registre-se
             </Text>
