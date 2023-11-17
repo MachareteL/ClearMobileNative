@@ -1,9 +1,16 @@
 import { Text, View } from "react-native";
+import { Image } from "expo-image";
 
-export default function Product() {
+export default function Product({
+  name,
+  price,
+  uri,
+  description,
+}: ProductProps) {
   return (
-    <View>
-      <Text>Product</Text>
+    <View style={{ backgroundColor: "#fdd", display: "flex" }}>
+      <Image source={uri} style={{ width: 100, height: 100 }} />
+      <Text>{name}</Text>
     </View>
   );
 }

@@ -5,8 +5,11 @@ import Product from "../components/Product";
 export default function Products() {
   return (
     <SafeAreaView>
-      <Text>LUCAS</Text>
-      <Product />
+      <Product
+        name="Sabão de piso"
+        uri="https://via.placeholder.com/150"
+        price="25"
+      />
     </SafeAreaView>
   );
 }
