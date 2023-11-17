@@ -8,110 +8,75 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 export default function Home() {
-  
 
   return (
-    <View style={styles.container}>
-      <View style={styles.upperContainer}>
+    <ScrollView style={styles.container}>
+      <Image
+        source={require("../../assets/images/home/home1.png")}
+        resizeMode="cover"
+        style={styles.image1}
+      />
+      <View style={styles.title1}>
         <Image
-          source={require("../../assets/images/iconBlue.png")}
-          resizeMode="contain"
-        />
-        <Text style={styles.facaLogin}>Faça login</Text>
-      </View>
-      <View style={styles.bottomContainer}>
-        <ImageBackground
-          source={require("../../assets/images/background2.png")}
+          source={require("../../assets/images/home/title1.png")}
           resizeMode="cover"
-          style={styles.image}
-        >
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.placeholder}
-              placeholder="Email"
-              
-            />
-            <TextInput
-              style={styles.placeholder}
-              placeholder="Senha"
-             
-            />
-            <TouchableOpacity
-             
-            >
-              <Text
-                style={{
-                  paddingHorizontal: 36,
-                  paddingVertical: 12,
-                  backgroundColor: "rgba(0,62,154,1)",
-                  borderRadius: 16,
-                  color: "#FFF",
-                }}
-              >
-                Entrar
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity style={{ paddingBottom: 96 }}>
-            <Text style={{ color: "#FFF" }}>
-              Não possui uma conta? Registre-se
-            </Text>
-          </TouchableOpacity>
-        </ImageBackground>
+        />
       </View>
-    </View>
+      <View style={styles.comboText}>
+        <Text style={styles.text}>Aqui você encontra produtos para deixar seu ambiente mais limpo e confortável.</Text>
+        <Text style={styles.text}>Alta qualidade e preço justo.</Text>
+        <View>
+          <Text>Product</Text>
+          <Text>Product</Text>
+          <Text>Product</Text>
+          <Text>Product</Text>
+        </View>
+        <View style={styles.title1}>
+          <Image
+            source={require("../../assets/images/home/title2.png")}
+            resizeMode="cover"
+          />
+        </View>
+        <View>
+          <Text>Product</Text>
+          <Text>Product</Text>
+          <Text>Product</Text>
+          <Text>Product</Text>
+        </View>
+      </View>
+      <Image
+        source={require("../../assets/images/home/home2.png")}
+        resizeMode="cover"
+        style={styles.image1}
+      />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+
   },
-  upperContainer: {
+  image1: {
     width: "100%",
+  },
+  title1: {
+    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
+  },
+  comboText: {
+    display: "flex",
+    alignItems: "center",
+    padding: 40,
+  },
+  text: {
+    display: "flex",
     textAlign: "center",
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  bottomContainer: {
-    flex: 1,
-    width: "100%",
-  },
-  entrar: {
-    color: "#121212",
-    marginTop: 136,
-    marginLeft: 241,
-  },
-  entrar1: {
-    color: "rgba(255,255,255,1)",
-    textDecorationLine: "underline",
-    fontSize: 16,
-    marginTop: 143,
-    marginLeft: 155,
-  },
-  facaLogin: {
-    color: "rgba(0,62,154,1)",
-  },
-  placeholder: {
-    color: "#121212",
-    width: 239,
-    borderWidth: 1,
-    borderColor: "rgba(0,62,154,1)",
-    borderRadius: 16,
-    letterSpacing: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 4,
-  },
-  inputContainer: {
-    alignItems: "center",
-    gap: 24,
+    padding: 10,
+    color: "#002967"
   },
 });
