@@ -8,21 +8,8 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../lib/firebaseConfig";
-export default function Login() {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const { navigate } = useNavigation();
-  async function authenticate() {
-    signInWithEmailAndPassword(
-      auth,
-      credentials.email,
-      credentials.password
-    ).then(() => {
-      navigate("Home");
-    });
-  }
+export default function Home() {
+  
 
   return (
     <View style={styles.container}>
@@ -43,21 +30,15 @@ export default function Login() {
             <TextInput
               style={styles.placeholder}
               placeholder="Email"
-              onChangeText={(email) => {
-                setCredentials({ ...credentials, email });
-              }}
+              
             />
             <TextInput
               style={styles.placeholder}
               placeholder="Senha"
-              onChangeText={(password) => {
-                setCredentials({ ...credentials, password });
-              }}
+             
             />
             <TouchableOpacity
-              onPress={() => {
-                authenticate();
-              }}
+             
             >
               <Text
                 style={{

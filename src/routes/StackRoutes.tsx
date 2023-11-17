@@ -3,17 +3,17 @@ import Register from "../screens/register";
 import Start from "../screens/start";
 import Login from "../screens/login";
 import DrawerRoutes from "./DrawerRoutes";
-import Produtos from "../screens/produtos";
+
 
 const Stack = createNativeStackNavigator();
 
 export default function StackRoutes() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Start} />
+      <Stack.Screen name="Start" component={Start} />
+      <Stack.Screen name="Home" component={DrawerRoutes} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Products" component={DrawerRoutes} />
     </Stack.Navigator>
   );
 }
