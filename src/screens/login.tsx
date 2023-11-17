@@ -8,17 +8,20 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import { supabase } from "../lib/supabaseconfig";
 import { useNavigation } from "@react-navigation/native";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebaseConfig";
 export default function Login() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const { navigate } = useNavigation();
   async function authenticate() {
-    const { data, error } = await supabase.auth.signInWithPassword(credentials);
-    console.log(data);
-    
-    navigate("Register");
+    signInWithEmailAndPassword(
+      auth,
+      credentials.email,
+      credentials.password
+    ).then(() => {
+      navigate("Register");
+    });
   }
 
   return (
