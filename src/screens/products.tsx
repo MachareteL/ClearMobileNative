@@ -7,7 +7,7 @@ export default function Products() {
     <SafeAreaView>
       <Product
         name="Sabão de piso"
-        uri="https://via.placeholder.com/150"
+        image="https://via.placeholder.com/150"
         price="25"
       />
     </SafeAreaView>
