@@ -4,7 +4,7 @@ import { Image } from "expo-image";
 export default function Product({
   name,
   price,
-  uri,
+  image: uri,
   description,
 }: ProductProps) {
   return (
