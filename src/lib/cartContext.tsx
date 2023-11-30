@@ -11,10 +11,21 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AddCartContext.Provider
       value={useCallback((item) => {
-        if (Array.isArray(item)) {
-          setItems([...itemsRef.current, ...item]);
+        const existingItem = itemsRef.current.find(
+          (_item) => _item.name === item.name
+        );
+
+        if (existingItem) {
+          // Item já existe no carrinho, incrementar a quantidade
+          const updatedItems = itemsRef.current.map((_item) =>
+            _item.name === item.name
+              ? { ..._item, quantity: _item.quantity + 1 }
+              : _item
+          );
+          setItems(updatedItems);
         } else {
-          setItems([...itemsRef.current, item]);
+          // Item não existe no carrinho, adicioná-lo
+          setItems([...itemsRef.current, { ...item, quantity: 1 }]);
         }
       }, [])}
     >

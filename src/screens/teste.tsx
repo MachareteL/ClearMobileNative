@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../lib/firebaseConfig";
 import { useContext } from "react";
-import { CartContext } from "../lib/cartContext";
+import { AddCartContext, CartContext } from "../lib/cartContext";
 
 export default function Teste() {
   //   useEffect(() => {
@@ -15,13 +15,24 @@ export default function Teste() {
   //     });
   //   }, []);
   const carrinho = useContext(CartContext);
-  
+  const add = useContext(AddCartContext);
   return (
     <SafeAreaView>
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            add({
+              name: "carrinho",
+              price: "123",
+              image: "https://via.placeholder.com/120",
+              description: "This is a placeholder",
+              quantity: 1,
+            });
+          }}
+        >
           <Text>adicionar</Text>
         </TouchableOpacity>
+        <Text>{JSON.stringify(carrinho)}</Text>
       </View>
     </SafeAreaView>
   );

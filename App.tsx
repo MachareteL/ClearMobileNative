@@ -1,10 +1,10 @@
 import Routes from "./src";
-import CartContext from "./src/lib/cartContext";
+import { CartProvider } from "./src/lib/cartContext";
 
 export default function App() {
   return (
-    <CartContext>
+    <CartProvider>
       <Routes />
-    </CartContext>
+    </CartProvider>
   );
 }
