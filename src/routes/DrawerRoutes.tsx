@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Cart from "../screens/cart";
-import Products from "../screens/products";
 import Home from "../screens/home";
+import Products from "../screens/products";
 
 const Drawer = createDrawerNavigator();
 
@@ -16,6 +16,7 @@ export default function DrawerRoutes() {
       }}
     >
       <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Cart" component={Cart} />
       <Drawer.Screen name="Products" component={Products} />
     </Drawer.Navigator>
   );

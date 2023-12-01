@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,7 +7,6 @@ import Product from "../components/Product";
 
 export default function Cart() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
       <GestureHandlerRootView style={styles.container}>
         <StatusBar style="auto" />
 
@@ -43,7 +41,6 @@ export default function Cart() {
           </View>
         </LinearGradient>
       </GestureHandlerRootView>
-    </SafeAreaView>
   );
 }
 
