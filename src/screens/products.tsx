@@ -9,6 +9,7 @@ export default function Products() {
         name="Sabão de piso"
         image="https://via.placeholder.com/150"
         price="25"
+        quantity={1}
       />
     </SafeAreaView>
   );
