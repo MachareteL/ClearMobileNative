@@ -2,8 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { TouchableOpacity } from "react-native";
 import { Octicons } from "@expo/vector-icons";
-import { Feather } from '@expo/vector-icons';
-
+import { Feather } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AddCartContext, RemoveCartContext } from "../lib/cartContext";
 export default function Product({
   name,
   price,
@@ -12,9 +13,9 @@ export default function Product({
   add,
   remove,
   quantity,
-  addToCart,
-  removeFromCart
-}: ProductProps & { addToCart?: () => void; removeFromCart?: () => void }) {
+}: ProductProps) {
+  const addItemToCart = useContext(AddCartContext);
+  const removeItemFromCart = useContext(RemoveCartContext);
   return (
     <>
       <View style={styles.productCard}>
@@ -24,7 +25,12 @@ export default function Product({
             <View style={styles.container}>
               <Text style={{ fontSize: 16 }}>{name}</Text>
               {remove && (
-                <TouchableOpacity style={styles.botaoTrash}>
+                <TouchableOpacity
+                  style={styles.botaoTrash}
+                  onPress={() => {
+                    removeItemFromCart({ name, image, price });
+                  }}
+                >
                   <Octicons name="trash" size={18} color="gray" />
                 </TouchableOpacity>
               )}
@@ -33,27 +39,67 @@ export default function Product({
           </View>
           <View style={styles.container}>
             <Text style={{ fontSize: 20 }}>R$ {price}</Text>
-            {add ? <>
-              <TouchableOpacity style={styles.botao}>
-                <Text style={{ color: "#fff", fontSize: 18 }}>
-                  Add Carrinho
-                </Text>
-              </TouchableOpacity>
-            </>
-              : quantity ?
+            {add ? (
+              <>
+                <TouchableOpacity
+                  style={styles.botao}
+                  onPress={() => {
+                    addItemToCart({
+                      name,
+                      price,
+                      image,
+                      description,
+                      quantity,
+                      add: false,
+                      remove: true,
+                    });
+                    alert("Produto adicionado ao carrinho com sucesso!");
+                  }}
+                >
+                  <Text style={{ color: "#fff", fontSize: 18 }}>
+                    Add Carrinho
+                  </Text>
+                </TouchableOpacity>
+              </>
+            ) : (
+              quantity && (
                 <View style={styles.quantity}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      addItemToCart({
+                        name,
+                        price,
+                        image,
+                        description,
+                        quantity: 4,
+                        add: false,
+                        remove: true,
+                      });
+                    }}
+                  >
                     <Feather name="minus-circle" size={20} color="gray" />
-                  </TouchableOpacity >
+                  </TouchableOpacity>
                   <View style={styles.quantityText}>
-                    <Text style={{ fontSize: 20 }}>3</Text>
+                    <Text style={{ fontSize: 20 }}>{quantity}</Text>
                   </View>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      addItemToCart({
+                        name,
+                        price,
+                        image,
+                        description,
+                        quantity,
+                        add: false,
+                        remove: true,
+                      });
+                    }}
+                  >
                     <Feather name="plus-circle" size={20} color="gray" />
                   </TouchableOpacity>
-                </View> :
-                <></>
-            }
+                </View>
+              )
+            )}
           </View>
         </View>
       </View>
@@ -106,5 +152,5 @@ const styles = StyleSheet.create({
   quantityText: {
     backgroundColor: "#ECECEC",
     paddingHorizontal: 5,
-  }
+  },
 });

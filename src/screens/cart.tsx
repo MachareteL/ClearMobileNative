@@ -1,46 +1,72 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Product from "../components/Product";
+import { useContext, useState, useEffect } from "react";
+import { CartContext } from "../lib/cartContext";
 
 export default function Cart() {
+  const products = useContext(CartContext);
+  const [totalPrecos, setTotalPrecos] = useState(0);
+  function getFullPrice() {
+    const novoTotal = products?.reduce(
+      (total, produto) => total + (+produto.price || 0),
+      0
+    );
+    setTotalPrecos(novoTotal ?? 0);
+  }
+  useEffect(() => {
+    return () => {
+      getFullPrice();
+    };
+  }, [products]);
   return (
-      <GestureHandlerRootView style={styles.container}>
-        <StatusBar style="auto" />
-
-        <ScrollView style={styles.container1}>
-          {[1, 2, 3, 4, 5, 6].map(() => (
+    <GestureHandlerRootView style={styles.container}>
+      <StatusBar style="auto" />
+      <ScrollView style={styles.container1}>
+        {products?.map(
+          ({ name, image, price, quantity, description, add, remove }) => (
             <Product
-              name="Sabão de Piso"
-              image="https://via.placeholder.com/150"
-              price="25,00"
-              quantity={1}
-              description="Um sabão muito bom para limpeza em geral, roupas e comodos limpos e bla bla bla"
+              name={name}
+              image={image}
+              price={price}
+              quantity={quantity}
+              description={description}
+              add={add}
+              remove={remove}
             />
-          ))}
-        </ScrollView>
-        <LinearGradient
-          style={styles.rodape}
-          start={{ x: 0, y: 0.3 }}
-          end={{ x: 0, y: 0 }}
-          colors={["rgba(255,255,255,1)", "rgba(255,255,255,0)"]}
-        >
-          <View style={styles.precoRodape}>
-            <Text style={{ color: "#002967", fontSize: 25 }}>TOTAL</Text>
-            <Text style={{ color: "#002967", fontSize: 25 }}>R$ 00,00</Text>
-          </View>
-          <View style={styles.buttons}>
-            <TouchableOpacity style={styles.button1}>
-              <Text style={{ color: "#002967" }}>Continuar comprando</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button2}>
-              <Text style={{ color: "#fff" }}>Finalizar Compra</Text>
-            </TouchableOpacity>
-          </View>
-        </LinearGradient>
-      </GestureHandlerRootView>
+          )
+        )}
+      </ScrollView>
+      <LinearGradient
+        style={styles.rodape}
+        start={{ x: 0, y: 0.3 }}
+        end={{ x: 0, y: 0 }}
+        colors={["rgba(255,255,255,1)", "rgba(255,255,255,0)"]}
+      >
+        <View style={styles.precoRodape}>
+          <Text style={{ color: "#002967", fontSize: 25 }}>TOTAL</Text>
+          <Text style={{ color: "#002967", fontSize: 25 }}>
+            R${totalPrecos}
+          </Text>
+        </View>
+        <View style={styles.buttons}>
+          <TouchableOpacity style={styles.button1}>
+            <Text style={{ color: "#002967" }}>Continuar comprando</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button2}>
+            <Text style={{ color: "#fff" }}>Finalizar Compra</Text>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
+    </GestureHandlerRootView>
   );
 }
 
@@ -49,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container1: {
-    backgroundColor: "#ffd",
+    backgroundColor: "#fff",
     overflow: "scroll",
   },
   rodape: {

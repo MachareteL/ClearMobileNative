@@ -19,7 +19,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
           // Item já existe no carrinho, incrementar a quantidade
           const updatedItems = itemsRef.current.map((_item) =>
             _item.name === item.name
-              ? { ..._item, quantity: _item.quantity + 1 }
+              ? { ..._item, quantity: _item.quantity ? _item.quantity + 1 : 1 }
               : _item
           );
           setItems(updatedItems);
