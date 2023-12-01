@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { TouchableOpacity } from "react-native";
 import { Octicons } from "@expo/vector-icons";
+import { Feather } from '@expo/vector-icons';
 
 export default function Product({
   name,
@@ -32,13 +33,27 @@ export default function Product({
           </View>
           <View style={styles.container}>
             <Text style={{ fontSize: 20 }}>R$ {price}</Text>
-            {add && (
+            {add ? <>
               <TouchableOpacity style={styles.botao}>
                 <Text style={{ color: "#fff", fontSize: 18 }}>
                   Add Carrinho
                 </Text>
               </TouchableOpacity>
-            )}
+            </>
+              : quantity ?
+                <View style={styles.quantity}>
+                  <TouchableOpacity>
+                    <Feather name="minus-circle" size={20} color="gray" />
+                  </TouchableOpacity >
+                  <View style={styles.quantityText}>
+                    <Text style={{ fontSize: 20 }}>3</Text>
+                  </View>
+                  <TouchableOpacity>
+                    <Feather name="plus-circle" size={20} color="gray" />
+                  </TouchableOpacity>
+                </View> :
+                <></>
+            }
           </View>
         </View>
       </View>
@@ -83,4 +98,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 100,
   },
+  quantity: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  quantityText: {
+    backgroundColor: "#ECECEC",
+    paddingHorizontal: 5,
+  }
 });

@@ -6,6 +6,7 @@ import DrawerRoutes from "./DrawerRoutes";
 import Cart from "../screens/cart";
 import Products from "../screens/products";
 import Teste from "../screens/teste";
+import Product from "../components/Product";
 
 const Stack = createNativeStackNavigator();
 
