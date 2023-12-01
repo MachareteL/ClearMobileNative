@@ -3,7 +3,7 @@ type ProductProps = {
   name: string;
   price: string;
   description?: string;
-  quantity: number;
+  quantity?: number;
   add?: boolean;
 remove?: boolean
 };

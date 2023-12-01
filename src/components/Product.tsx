@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { TouchableOpacity } from "react-native";
-import { Octicons } from '@expo/vector-icons';
+import { Octicons } from "@expo/vector-icons";
 
 export default function Product({
   name,
@@ -9,46 +9,34 @@ export default function Product({
   image,
   description,
   add,
-  remove
+  remove,
+  quantity,
 }: ProductProps) {
   return (
     <>
       <View style={styles.productCard}>
-        <Image
-          source={image}
-          style={{ width: 100, height: 100 }}
-        />
+        <Image source={image} style={{ width: 100, height: 100 }} />
         <View style={styles.textCard}>
           <View>
             <View style={styles.container}>
               <Text style={{ fontSize: 16 }}>{name}</Text>
-              {remove ?
-                <>
-                  <TouchableOpacity style={styles.botaoTrash}>
+              {remove && (
+                <TouchableOpacity style={styles.botaoTrash}>
                   <Octicons name="trash" size={18} color="gray" />
-                  </TouchableOpacity>
-                </>
-                :
-                <>
-                </>
-              }
+                </TouchableOpacity>
+              )}
             </View>
-            <Text style={{ color: "gray" }}>
-              {description}
-            </Text>
+            <Text style={{ color: "gray" }}>{description}</Text>
           </View>
           <View style={styles.container}>
             <Text style={{ fontSize: 20 }}>R$ {price}</Text>
-            {add ?
-              <>
-                <TouchableOpacity style={styles.botao}>
-                  <Text style={{ color: "#fff", fontSize: 18 }}>Add Carrinho</Text>
-                </TouchableOpacity>
-              </>
-              :
-              <>
-              </>
-            }
+            {add && (
+              <TouchableOpacity style={styles.botao}>
+                <Text style={{ color: "#fff", fontSize: 18 }}>
+                  Add Carrinho
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>
@@ -76,7 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "90%"
+    width: "90%",
   },
   botao: {
     backgroundColor: "#002967",
@@ -84,13 +72,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 100
+    borderRadius: 100,
   },
   botaoTrash: {
     display: "flex",
     justifyContent: "center",
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 100
-  }
+    borderRadius: 100,
+  },
 });
