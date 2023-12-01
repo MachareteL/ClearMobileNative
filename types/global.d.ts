@@ -5,5 +5,5 @@ type ProductProps = {
   description?: string;
   quantity?: number;
   add?: boolean;
-remove?: boolean
+  remove?: boolean;
 };

@@ -11,7 +11,9 @@ export default function Product({
   add,
   remove,
   quantity,
-}: ProductProps) {
+  addToCart,
+  removeFromCart
+}: ProductProps & { addToCart?: () => void; removeFromCart?: () => void }) {
   return (
     <>
       <View style={styles.productCard}>

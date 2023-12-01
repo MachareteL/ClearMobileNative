@@ -1,8 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../lib/firebaseConfig";
 import { useContext } from "react";
 import { AddCartContext, CartContext } from "../lib/cartContext";
 
